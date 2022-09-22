@@ -2,11 +2,13 @@ import noticias from "../models/Noticia.js";
 
 class NoticiaController{
     static listarNoticias = (req,res)=>{
-        noticias.find((err, noticias)=>{
+        noticias.find()
+        .populate('autor')
+        .exec((err, noticias)=>{
             res.status(200).json(noticias);
         });
     };
-    static cadastrarNoticia = (req, res) => {
+    static cadastrarNoticias = (req, res) => {
         let noticia = new noticias(req.body);
         noticia.save((err) =>{
             if(err){
@@ -16,7 +18,7 @@ class NoticiaController{
             }
         })
     }
-    static atualizarNoticia = (req, res)=>{
+    static atualizarNoticias = (req, res)=>{
         const id = req.params.id;
 
         noticias.findByIdAndUpdate(id, {$set: req.body}, (err)=>{
@@ -30,7 +32,9 @@ class NoticiaController{
     static listarNoticiasId = (req, res)=>{
         const id = req.params.id;
 
-        noticias.findById(id, (err, noticias)=>{
+        noticias.findById(id)
+        .populate('autor')
+        .exec((err, noticias)=>{
             if(err){
                 res.status(400).send({message: `${err.message} - id da noticia não localizado`});
             }else{
