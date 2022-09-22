@@ -1,6 +1,6 @@
 const express = require('express');
 const { resolve } = require('path');
-const app = express();
+import app from "./src/app.js"
 
 app.use('/',express.static(resolve(__dirname,"./build")));
 app.use('/noticias',express.static(resolve(__dirname,"./build")));
