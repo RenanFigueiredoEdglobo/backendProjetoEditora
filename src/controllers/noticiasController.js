@@ -6,7 +6,6 @@ class NoticiaController{
             res.status(200).json(noticias);
         });
     };
-
     static cadastrarNoticia = (req, res) => {
         let noticia = new noticias(req.body);
         noticia.save((err) =>{
