@@ -5,9 +5,9 @@ const router = express.Router();
 
 router
     .get("/noticias", NoticiaController.listarNoticias)
-    .get("/noticias/:id", NoticiaController.listarNoticiasId)
-    .post("/noticias", NoticiaController.cadastrarNoticias)
-    .put("/noticias/:id",NoticiaController.atualizarNoticias)
-    .delete("/noticias/:id",NoticiaController.excluirNoticia)
+    .get("/noticia/:id", NoticiaController.listarNoticiasId)
+    .post("/cadastrar-noticia", NoticiaController.cadastrarNoticias)
+    .put("/atualizar-noticia/:id",NoticiaController.atualizarNoticias)
+    .delete("/deletar-noticia/:id",NoticiaController.excluirNoticia)
 
 export default router;
