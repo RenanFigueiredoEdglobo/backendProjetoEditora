@@ -4,7 +4,7 @@ const autorSchema = new mongoose.Schema(
     {
         id: {type: String},
         nome: {type: String, require: true},
-        idade: {type: Number, require:true}
+        idade: {type: String, require:true}
     }
 );
 const autores = mongoose.model("autores",autorSchema);
