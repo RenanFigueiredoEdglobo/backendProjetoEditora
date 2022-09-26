@@ -8,6 +8,6 @@ router
     .get("/noticia/:id", NoticiaController.listarNoticiasId)
     .post("/cadastrar-noticia", NoticiaController.cadastrarNoticias)
     .put("/atualizar-noticia/:id",NoticiaController.atualizarNoticias)
-    .delete("/deletar-noticia/:id",NoticiaController.excluirNoticia)
+    .delete("/excluir-noticia/:id",NoticiaController.excluirNoticia)
 
 export default router;
