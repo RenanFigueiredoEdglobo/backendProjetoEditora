@@ -1,7 +1,7 @@
 import express from "express";
-import noticias from "./noticiasRoutes.js"
-import autores from "./autorRoutes.js"
-const routes = (app) => {
+import noticias from "./noticiasRoutes"
+import autores from "./autorRoutes"
+const routes = (app = express()) => {
     app.route('/').get((req, res)=>{
         res.status(200).json({"status":"OK"})
     });
