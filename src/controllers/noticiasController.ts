@@ -14,7 +14,7 @@ class NoticiaController{
             if(err){
                 res.status(500).send({message: `${err.message} -falha ao cadastrar a noticia`})
             }else{
-                res.status(201).send(noticia.toJSON());
+                res.status(200).send(noticia.toJSON());
             }
         })
     }
