@@ -1,14 +1,14 @@
-import noticias from "../models/Noticia.js";
-
+import noticias from "../models/Noticia";
+import { Request, Response } from 'express'
 class NoticiaController{
-    static listarNoticias = (req,res)=>{
+    static listarNoticias = (req: Request,res: Response)=>{
         noticias.find()
         .populate('autor')
         .exec((err, noticias)=>{
             res.status(200).json(noticias);
         });
     };
-    static cadastrarNoticias = (req, res) => {
+    static cadastrarNoticias = (req:Request, res: Response) => {
         let noticia = new noticias(req.body);
         noticia.save((err) =>{
             if(err){
@@ -18,10 +18,10 @@ class NoticiaController{
             }
         })
     }
-    static atualizarNoticias = (req, res)=>{
+    static atualizarNoticias = (req:Request, res: Response)=>{
         const id = req.params.id;
 
-        noticias.findByIdAndUpdate(id, {$set: req.body}, (err)=>{
+        noticias.findByIdAndUpdate(id, {$set: req.body}, (err:Error)=>{
             if(!err){
                 res.status(200).send({message: 'Noticia atualizada com sucesso'});
             }else{
@@ -29,7 +29,7 @@ class NoticiaController{
             }
         });
     }
-    static listarNoticiasId = (req, res)=>{
+    static listarNoticiasId = (req:Request, res: Response)=>{
         const id = req.params.id;
 
         noticias.findById(id)
@@ -42,9 +42,9 @@ class NoticiaController{
             }
         });
     }
-    static excluirNoticia = (req, res)=>{
+    static excluirNoticia = (req:Request, res: Response)=>{
         const id = req.params.id;
-        noticias.findByIdAndDelete(id, (err)=>{
+        noticias.findByIdAndDelete(id, (err:Error)=>{
             if(!err){
                 res.status(200).send({message: 'noticia deletada com sucesso'});
             }else{
