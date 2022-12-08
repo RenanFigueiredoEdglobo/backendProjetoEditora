@@ -45,5 +45,6 @@ describe("Teste crud de  Autor", () => {
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
         expect(DeletarAutor.statusCode).toBe(200)
+        console.log(DeletarAutor.body)
     })
 })
